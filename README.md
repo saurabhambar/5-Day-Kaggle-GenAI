@@ -20,9 +20,15 @@
         - Positioning is imp - Otherwise it is like throwing all the words in a bag we loose all the structure.
       - Then we think for the **Multi-Head attention**  - Brain of transformer.
         - Famous Ex - Thirsty Tiger a classic so the sentence is "The tiger jumped out of the tree to get a drink because it was thirsty."
+      - Self-Attention Mechanism
         - It does this by creating the key value pair vector query for every single word.
         - The **key** is like a **label attached to each word** - what it represents.
         - The **Value** represents the actual information the word carries.
-        - The model calculates the score how well each query matched up with all other keys.
+        - The model calculates the score of how well each query matches up with all other keys.
         - Then it normalizes these scores - they become attention weights.
         - These weights tell us how much each word should pay attention to others.
+        - Then it uses those weights to create a weighted sum of all the value vectors.
+        - We get the Rich representation for each words which takes into accounts its relationship to every other word in the sentence.
+      - All this comparison and calculation happen in parallel using these metrics for the query Key k and Values v of all the tokens.
+      - This ability to process all these relationship at the same time is a huge reason why Transformers are so good at capturing these subtle meaning in language that previous models like **SEQUENTIAL** really struggled with, especially across longer distances within the sentences. 
+      - 
