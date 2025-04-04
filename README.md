@@ -1,1 +1,28 @@
 # 5-Day-Kaggle-GenAI
+
+- Core of the LLM:
+  - What they are made of
+  - How do they evolve
+  - How they actually learn
+- The foundation of most modern llms is the Transformer architecture.
+- It came from the Google Project focused on language translation in 2017.
+  - The original transformer has an encoder and decoder.
+  - Take a sentence in one language and turn it into another language.
+  - The encoder will take the input like sentence in one language -> create its representation of it like summary of the meaning -> then decoder uses that representation to generate the output -> translated piece by piece called as token
+  - Magic happens inside each layer of this Transformer
+    - First Input text need to preepped for the model -> Turn text into tokens based on specific vocabulary the model uses.
+    - Each of these tokens gets turned into a dense vector called an Embedding.
+      - That captures the meaning of that token.
+    - The transformer processes all the tokens at the same time.
+      - So we need to add in some information about the order in which they appeared in the sentences - This is called Positional encoding.
+      - There are different types of Positional Encoding, like **Sinodal** and **Learned** encodings.
+      - The choice can affect how well the model understands longer sentences or longer text sequences.
+        - Positioning is imp - Otherwise it is like throwing all the words in a bag we loose all the structure.
+      - Then we think for the **Multi-Head attention**  - Brain of transformer.
+        - Famous Ex - Thirsty Tiger a classic so the sentence is "The tiger jumped out of the tree to get a drink because it was thirsty."
+        - It does this by creating the key value pair vector query for every single word.
+        - The **key** is like a **label attached to each word** - what it represents.
+        - The **Value** represents the actual information the word carries.
+        - The model calculates the score how well each query matched up with all other keys.
+        - Then it normalizes these scores - they become attention weights.
+        - These weights tell us how much each word should pay attention to others.
