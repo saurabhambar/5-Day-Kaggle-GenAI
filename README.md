@@ -25,10 +25,65 @@
         - The **key** is like a **label attached to each word** - what it represents.
         - The **Value** represents the actual information the word carries.
         - The model calculates the score of how well each query matches up with all other keys.
-        - Then it normalizes these scores - they become attention weights.
+        - Then it normalizes these scores, and they become **Attention weights**.
         - These weights tell us how much each word should pay attention to others.
         - Then it uses those weights to create a weighted sum of all the value vectors.
         - We get the Rich representation for each words which takes into accounts its relationship to every other word in the sentence.
-      - All this comparison and calculation happen in parallel using these metrics for the query Key k and Values v of all the tokens.
-      - This ability to process all these relationship at the same time is a huge reason why Transformers are so good at capturing these subtle meaning in language that previous models like **SEQUENTIAL** really struggled with, especially across longer distances within the sentences. 
-      - 
+      - All this comparison and calculation happen in parallel using these metrics for the query **Key k and Values v** of all the tokens.
+      - This ability to process all these relationships simultaneously is a huge reason why Transformers are so good at capturing these subtle meanings in language that previous models like **SEQUENTIAL** struggled with, especially across longer distances within the sentences. 
+      - Multi-Edges doing the self-attention thing serveral times at the same time but with different sets of those query key and value matrices.
+      - Each of these parallel self-attention/head processes learns to focus on different types of relationships
+        - One head might look for grammatical stuff,
+        - Another one might focus on the meaning connection between words and by combining all those different views/prespective the model gets this much deeper understanding of what's going on in the text.
+          - Like second opinion, third or fourth.
+  - Layer Normalization & Residual Connection :
+    - Layer Normalization: 
+      - These are important for keeping the training on track when we have deep networks.
+      - It also helps to keep the activity level of each layer/activation at a steady level that makes the training go much faster.
+        - Also gives the better result in the end. 
+    - Residual connection acts like a shortcut within the network, letting the original input layer bypass everything and get added directly to the output.
+      - It is a way for the network to remember what it learned earlier, even if it's gone through many, many layers.
+      - Important in case of Deep Models.
+      - It prevents the **Vanishing Radiance Problem** where the signal gets weaker and weaker as it goes deeper.
+   - After that, we have the **Feed Forward Layer**:
+     - Applied to each token;s representation seperately after we have done all the attention things.
+     - It usually has two linear transformations with non-linear activation functions in between, like **relu or gelu**.
+     - This gives the model even more power to represent information and helps it learn these complex functions of the input.
+  - We have seen the encoders and decoder in the original transformer design But Newer LLMs they're going with the decoder only architecture.
+    - When we focus on generating texts like writing or having conversation, **we don't always need the encoder part**.
+    - **Encoder main job is to create the representation of the whole input sequence upfront.**
+    - Decoder models skip that step and directly generate the output token by token.
+    - They use a special type of **Self-Attention** called **Masked Self-Attention**.
+      - It is a way to make sure that when the model is predicting the next token, it can only see the token that came before.
+      - Just like when we write or speak.
+    - SIMPLE DESIGN FOR GENERATING TEXT.
+  - MOE - Mixture of Experts
+    - Clear way to make these models even bigger but without making them super slow.
+  - HOW WE MAKE THESE MASSIVE MODELS MORE EFFICIENT
+    - MOE is the key part of that.
+    - In MOE, we have these specialized submodels - experts, and they all live within one big model.
+    - There is a gatting network that decides which experts are the best ones to use for the each input.
+    - We might have the model with billions of parameters, but for any given input, only a small fraction of those parameters/experts are actually active.    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
