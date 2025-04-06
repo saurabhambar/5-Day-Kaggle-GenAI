@@ -62,8 +62,55 @@
   - HOW WE MAKE THESE MASSIVE MODELS MORE EFFICIENT
     - MOE is the key part of that.
     - In MOE, we have these specialized submodels - experts, and they all live within one big model.
-    - There is a gatting network that decides which experts are the best ones to use for the each input.
-    - We might have the model with billions of parameters, but for any given input, only a small fraction of those parameters/experts are actually active.    
+    - There is a **gatting network** that decides which experts are the best ones to use for the each input.
+    - We might have the model with billions of parameters, but for any given input, only a small fraction of those parameters/experts are actually active.
+      - Like a team of Specialists, only call in the ones we need for a specific job.   
+  - **How LLMs have evolved over time**
+    - LLMs (Large Language Models) evolved significantly after the introduction of the Transformer architecture.
+    - The Transformer model acted as a foundational breakthrough, enabling rapid progress in LLM development.
+    - GPT-1 (OpenAI, 2018) marked a major milestone:
+      - Used **a decoder-only architecture**.
+      - Trained in an unsupervised manner using a large dataset called BooksCorpus.
+      - This was the key - Unsupervised Pre-training let the model Learned general language patterns from raw text.
+      - Later fine-tuned for specific tasks.
+      - Faced issues like repetitive text - repeating the same phases over and over and struggled with long conversations.
+    - In the same year, Google released BERT:
+      - Utilized **an encoder-only architecture**.
+      - Focused on understanding language rather than generation.
+      - Trained using masked language modeling and next sentence prediction tasks. - All about figuring out the meaning of text.
+    - Key distinction:
+      - GPT-1: Could generate text, but sometimes repeated phrases or get stuck.
+      - BERT: Could understand text well but couldn't generate or hold a conversation.
+- Then came :         
+### GPT-2 (OpenAI, 2019)
+- Scaled up the GPT-1 architecture.
+- Trained on **WebText**, a dataset sourced from **Reddit**.
+- Featured many more **parameters**, improving:
+  - **Coherence**
+  - **Longer dependencies between the word**
+- It could learn new task without specific training - Introduced **zero-shot learning**:
+  - Performed tasks without specific training.
+  - Understood task intent from **prompt examples** alone and figured out how to do it.
+  - **This was quite a leap**
+
+- Then in 2020:
+### GPT-3 Family (Starting 2020)
+- Model kept bigger and bigger
+- **GPT-3** had **175 billion parameters** — significantly larger models.
+- Enhanced **few-shot learning** capabilities.
+  - Learning from just a handful of examples. 
+- Introduced **InstructGPT**:
+  - Also seen are Instruction-tuned models trained to follow instruction written in **Natural Language**.
+
+- Then came: 
+### GPT-3.5
+- Specialized in **understanding and writing code**.
+
+### GPT-4 - Game Changer
+- A **multimodal model**: capable of processing both **text and images**.
+- Introduced a much larger **context window**, allowing for **longer text processing**.
+
+---
 
 
 
